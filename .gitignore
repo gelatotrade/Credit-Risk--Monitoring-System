@@ -1,0 +1,37 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# IDE settings
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Generated data (keep templates, exclude demo data)
+data/demo/*.db
+data/real/*.db
+
+# Dashboards (generated)
+dashboards/*.html
+dashboards/*.xlsx
+dashboards/charts/
+
+# Reports (generated)
+reports/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
