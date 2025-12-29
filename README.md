@@ -181,14 +181,113 @@ Each template includes:
 - **Data Sheet**: Sample data with correct formatting
 - **Referenzdaten**: Valid values for dropdown fields
 
+## System Overview
+
+The Credit Risk Monitoring System provides comprehensive portfolio analytics with regulatory compliance features:
+
+![System Overview](docs/images/system_overview.png)
+
+The system processes data from multiple sources (customers, contracts, payments, economic indicators) through its analytics engine and generates various dashboard views and reports.
+
+---
+
 ## Dashboard Views
 
-The system generates several dashboard views:
+The system generates four main dashboard visualizations for comprehensive risk monitoring:
 
-1. **Risk Heatmap**: Customer distribution by rating and risk class
-2. **Portfolio Quality Trend**: NPL development over time
-3. **Limit Alerts**: Current limit utilization warnings
-4. **Concentration Matrix**: Industry × Region exposure matrix
+### 1. Risk Heatmap
+
+**Purpose:** Visualize customer distribution across rating classes and risk categories
+
+![Risk Heatmap](docs/images/risk_heatmap.png)
+
+The Risk Heatmap displays:
+- **X-axis**: Credit ratings from AAA (lowest risk) to C (highest risk)
+- **Y-axis**: Risk classes (niedrig → sehr_hoch)
+- **Cell values**: Number of customers in each category
+- **Color intensity**: Indicates concentration (green = low, red = high)
+
+**Use Cases:**
+- Identify portfolio concentrations in specific risk segments
+- Monitor rating migrations over time
+- Support limit setting and risk appetite decisions
+
+---
+
+### 2. Portfolio Quality Trend
+
+**Purpose:** Track Non-Performing Loan (NPL) development over time
+
+![Portfolio Quality Trend](docs/images/portfolio_quality_trend.png)
+
+The Portfolio Quality Trend shows:
+- **Blue line**: NPL ratio as percentage of total portfolio
+- **Green dashed line**: NPL volume in million EUR
+- **Red threshold**: Warning level at 3% NPL ratio
+- **Time range**: Rolling 24-month view
+
+**Key Metrics:**
+- NPL Quote (%) = Non-Performing Loans / Total Exposure
+- NPL Volume = Absolute amount of non-performing exposures
+- Trend direction indicates portfolio health trajectory
+
+---
+
+### 3. Limit Alerts
+
+**Purpose:** Monitor current limit utilization and breaches
+
+![Limit Alerts](docs/images/limit_alerts.png)
+
+The Limit Alerts dashboard displays:
+- **Limit types**: Single customer, industry, and regional limits
+- **Utilization bars**: Visual representation of current usage
+- **Status badges**:
+  - **OK** (green): < 80% utilization
+  - **WARNUNG** (orange): 80-95% utilization
+  - **KRITISCH** (red): 95-100% utilization
+  - **ÜBERSCHRITTEN** (dark red): > 100% - limit exceeded
+
+**Threshold Lines:**
+- 80%: Warning threshold
+- 95%: Critical threshold
+- 100%: Hard limit
+
+---
+
+### 4. Concentration Matrix
+
+**Purpose:** Analyze exposure distribution across industries and regions
+
+![Concentration Matrix](docs/images/concentration_matrix.png)
+
+The Concentration Matrix shows:
+- **Rows**: Industry sectors (Automobilbau, Maschinenbau, etc.)
+- **Columns**: German regions (Bayern, NRW, etc.)
+- **Cell values**: Exposure in million EUR
+- **Color intensity**: Relative concentration level
+- **Row/Column totals**: Aggregated exposures
+
+**Concentration Limits:**
+- Industry maximum: 30% of total portfolio
+- Region maximum: 40% of total portfolio
+- Single customer maximum: 10% of total portfolio
+
+---
+
+## Generating Visualizations
+
+To regenerate the documentation visualizations:
+
+```bash
+# Install matplotlib if not present
+pip install matplotlib pandas numpy
+
+# Generate visualizations
+python generate_docs_visualizations.py
+```
+
+The images will be saved to `docs/images/`
 
 ## Configuration
 
